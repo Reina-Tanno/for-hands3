@@ -1,0 +1,9 @@
+PackageURL = http://www.takakusaki.info/4hands.jar
+AppSize = 16471
+AppName = takakusaki.info
+AppVer = 2.2
+AppClass = ForHandsApp
+SPsize = 102400
+AppTrace = on
+UseNetwork = http
+LastModified = Tue, 13 Feb 2007 16:47:59
