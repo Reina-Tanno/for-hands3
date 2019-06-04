@@ -3,59 +3,59 @@
 require_once("sys_config.php");
 
 
-// POST¤ÎÆâÍÆ¤òGET¤Ë¥³¥Ô¡¼¤¹¤ë
+// POSTã®å†…å®¹ã‚’GETã«ã‚³ãƒ”ãƒ¼ã™ã‚‹
 if(isset($_POST["mode"])){
   $_GET = $_POST;
 }
 
 if(isset($_GET["mode"])){
-  // ¥Ç¡¼¥¿¤¬Á÷¤é¤ì¤¿¾ì¹ç
+  // ãƒ‡ãƒ¼ã‚¿ãŒé€ã‚‰ã‚ŒãŸå ´åˆ
   switch($_GET["mode"]){
     case "insert":
-      // ¥Ç¡¼¥¿ÁŞÆş¤Î¾ì¹ç
+      // ãƒ‡ãƒ¼ã‚¿æŒ¿å…¥ã®å ´åˆ
       print insertData($_GET);
       break;
     case "edit":
-      // ¥Ç¡¼¥¿ÊÔ½¸¤Î¾ì¹ç
+      // ãƒ‡ãƒ¼ã‚¿ç·¨é›†ã®å ´åˆ
       print editData($_GET);
       break;
     case "delete":
-      // ¥Ç¡¼¥¿ºï½ü¤Î¾ì¹ç
+      // ãƒ‡ãƒ¼ã‚¿å‰Šé™¤ã®å ´åˆ
       print deleteData($_GET);
       break;
     default:
-      // ¤½¤ì°Ê³°¤Î¾ì¹ç
+      // ãã‚Œä»¥å¤–ã®å ´åˆ
       print ERROR;
   }
 }else{
-  // ¥Ç¡¼¥¿¤¬Á÷¤é¤ì¤Ê¤«¤Ã¤¿¾ì¹ç
+  // ãƒ‡ãƒ¼ã‚¿ãŒé€ã‚‰ã‚Œãªã‹ã£ãŸå ´åˆ
   print ERROR;
 }
 
 /**
- * ¿·µ¬¥ì¥³¡¼¥É¤òÁŞÆş¤¹¤ë
+ * æ–°è¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹
  */
 function insertData($data,$setid = 0){
   if(!validate($data)){
-    // ¥Ñ¥é¥á¡¼¥¿¤ÎÂÅÅöÀ­¤òÄ´¤Ù¤ë
+    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å¦¥å½“æ€§ã‚’èª¿ã¹ã‚‹
     return ERROR;
   }
-  // ¥ì¥³¡¼¥É¤ÎID¤òÀßÄê¤¹¤ë
+  // ãƒ¬ã‚³ãƒ¼ãƒ‰ã®IDã‚’è¨­å®šã™ã‚‹
   if($setid == 0){
     $id = getCurrentID() + 1;
   }else{
     $id = $setid;
   }
 
-  // ¥Õ¥¡¥¤¥ë¤ò³«¤¯¡ÊÄÉµ­¡Ë
+  // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãï¼ˆè¿½è¨˜ï¼‰
   $file = fopen("./data/".$data["year"].$data["month"].".dat","a");
   $table_file = fopen("./data/id_table.dat","a");
 
-  // ¥ì¥³¡¼¥É¤òºîÀ½¤¹¤ë¡ÊID,ÆüÉÕ,³«»Ï»ş´Ö,½ªÎ»»ş´Ö,Í½Ìó¤«Í½Äê¡Ë
-  $record = $id.",".$data["date"].",".$data["start"].",".$data["finish"]."\n";
-  $table_col = $id.",".$data["year"].$data["month"]."\n";
+  // ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ä½œè£½ã™ã‚‹ï¼ˆID,æ—¥ä»˜,é–‹å§‹æ™‚é–“,çµ‚äº†æ™‚é–“,äºˆç´„ã‹äºˆå®šï¼‰
+  $record = $id.",".$data["date"].",".$data["start"].",".$data["finish"]."Â¥n";
+  $table_col = $id.",".$data["year"].$data["month"]."Â¥n";
 
-  // ¥ì¥³¡¼¥É¤ò½ñ¤­¹ş¤à
+  // ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ›¸ãè¾¼ã‚€
   if(fwrite($file,$record) && fwrite($table_file,$table_col)){
     fclose($file);
     fclose($table_file);
@@ -67,16 +67,16 @@ function insertData($data,$setid = 0){
 }
 
 /**
- * ¥ì¥³¡¼¥É¤òÊÔ½¸¤¹¤ë
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç·¨é›†ã™ã‚‹
  */
 function editData($data){
   
-  // ¸Å¤¤¥ì¥³¡¼¥É¤òºï½ü¤¹¤ë
+  // å¤ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹
   if(!deleteData($data)){
     return ERROR;
   }
 
-  // ¿·¤·¤¤¥ì¥³¡¼¥É¤òÁŞÆş¤¹¤ë
+  // æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹
   if(!insertData($data,$data["id"])){
     return ERROR;
   }
@@ -86,7 +86,7 @@ function editData($data){
 }
 
 /**
- * ¥ì¥³¡¼¥É¤òºï½ü¤¹¤ë
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹
  */
 function deleteData($data){
   if(!validate($data)){
@@ -95,12 +95,12 @@ function deleteData($data){
   
   $table = getIDTable();
 
-  // ´û¤ËID¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¤«¤É¤¦¤«Ä´¤Ù¤ë
+  // æ—¢ã«IDãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹èª¿ã¹ã‚‹
   if(!array_key_exists(intval($data["id"]),$table)){
     return ERROR;
   }
   
-  // Í½Ìó¾ğÊó¥Õ¥¡¥¤¥ë¤«¤é¥ì¥³¡¼¥É¤òºï½ü¤¹¤ë
+  // äºˆç´„æƒ…å ±ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹
   $file = fopen("./data/".$table[$data["id"]].".dat","r");
   $file_lines = array();
   while(!feof($file)){
@@ -113,15 +113,15 @@ function deleteData($data){
   
   $file = fopen("./data/".$table[$data["id"]].".dat","w+");
   foreach($file_lines as $line){
-    fwrite($file,implode(",",$line)."\n");
+    fwrite($file,implode(",",$line)."Â¥n");
   }
   fclose($file);
   
-  // IDÉ½¤«¤é¥ì¥³¡¼¥É¤òºï½ü¤¹¤ë
+  // IDè¡¨ã‹ã‚‰ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹
   $file = fopen("./data/id_table.dat","w+");
   foreach($table as $key => $value){
     if($key != $data["id"] && $key != ""){
-      fwrite($file,$key.",".$value."\n");
+      fwrite($file,$key.",".$value."Â¥n");
     }
   }
   
@@ -130,7 +130,7 @@ function deleteData($data){
 }
 
 /**
- * ÃÍ¤ÎÂÅÅöÀ­¤òÄ´¤Ù¤ë
+ * å€¤ã®å¦¥å½“æ€§ã‚’èª¿ã¹ã‚‹
  *
  * @param unknown_type $data
  * @return unknown
@@ -161,7 +161,7 @@ function validate(&$data){
 }
 
 /**
- * ID¤ÈÍ½Ìó¾ğÊó¥Õ¥¡¥¤¥ë(Ç¯·î)¤ÎÂĞ±şÉ½¤ò¼èÆÀ¤¹¤ë
+ * IDã¨äºˆç´„æƒ…å ±ãƒ•ã‚¡ã‚¤ãƒ«(å¹´æœˆ)ã®å¯¾å¿œè¡¨ã‚’å–å¾—ã™ã‚‹
  */
 function getIDTable(){
   $id_table = array();
@@ -179,7 +179,7 @@ function getIDTable(){
 }
 
 /**
- * ¸½ºß»È¤ï¤ì¤Æ¤¤¤ëID¤Î¿ô¤ò¼èÆÀ¤¹¤ë
+ * ç¾åœ¨ä½¿ã‚ã‚Œã¦ã„ã‚‹IDã®æ•°ã‚’å–å¾—ã™ã‚‹
  */
 function getCurrentID(){
   $id_table = getIDTable();
