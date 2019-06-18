@@ -1,0 +1,123 @@
+#title{
+    font-size: 1.5em;
+}
+#from_a0{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:20px; 
+}
+#year{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:35px; 
+}
+
+#month{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:20px; 
+}
+
+#date{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:20px; 
+}
+#from_a1{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:20px; 
+}
+#to_b0{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:20px; 
+}
+#to_b1{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:20px; 
+}
+#user_name{
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding:10px;
+    font-size:1.0em;
+    font-family:Arial, sans-serif;
+    color:#aaa;
+    border:solid 1px #ccc;
+    margin:0 0 5px;
+    width:100px; 
+}
+
+
+#reserve {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #ffc062;/*ボタン色*/
+    color: #FFF;
+    border-radius: 10px;
+  }
+  #reserve:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
+
+  table td{
+    border: solid 1px white;
+    padding: 10px;
+  }
+
+  table{
+    border-collapse: collapse;
+
+  }
+
+  #table{
+      display: flex;
+  }
