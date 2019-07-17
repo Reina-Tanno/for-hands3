@@ -1,0 +1,71 @@
+
+table.table{
+  display: block;
+  position: absolute;
+  border-collapse: collapse;
+  overflow: scroll;
+  width: calc(100vw - 3.0rem);
+  height: calc(75vh);
+  z-index: 1;
+}
+
+#reserve_info{
+  z-index: 3;
+  position: absolute;          
+  background-color: white;
+  width: 500px;
+  height: 400px;
+  margin-top: 200px;
+  margin-left: 300px;
+  padding:100px;
+}
+
+
+.table_table thead,
+.table_table tbody {
+  display: block;
+  width: max-content;  /* 内容に合わせて、折り返さず、一列で内容を表示 */
+} 
+
+.table_table th,
+.table_table td {
+  display: inline-block; /* 横に一列 */
+  width: 6.0rem; 
+  height: 3rem;
+  background: rgb(247, 247, 247); 
+  font-size: 1.0rem;
+  border:solid 0.3px white;
+}
+
+.table_table th{
+    background: rgb(126, 134, 145); 
+}
+
+.table_table tbody th {
+  position: sticky;/* 固定. */
+  left: 0; /*固定する場所*/
+  z-index: 1; /*数が大きいほうが上.*/
+}
+
+.table_table thead {
+  position: sticky;   /* 固定. */
+  top: 0;
+  z-index: 2; /*数が大きいほうが上.*/
+}
+.table_table tr *:nth-child(1){
+  width: 50px;
+}
+
+#l2 {
+    top: 0px;   /*動的に変更されるので適当*/
+    left: 0px;  /*動的に変更されるので適当*/
+    width: 400px; /*撮影枠サイズ*/ 
+    height: 60px; /*撮影枠サイズ*/
+    position: absolute; /*absoluteに設定*/
+    padding: 0em 0em;
+}
+
+
+
+
+
