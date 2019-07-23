@@ -1,35 +1,4 @@
-<?php
 
-session_start();
-
-$dsn = "mysql:dbname=Customers;host=133.2.113.160";  // DBサーバのURL
-$user = "root";  // ユーザー名
-$password = "akogi0304";  // ユーザー名のパスワード
-
-
-$errorMessage = "";
-
-if(isset($_POST[sub])){
-     echo 'でけた'; 
-
-
-try {
-    $dbh = new PDO('mysql:host=localhost;dbname=Customers;charset=utf8mb4;','root','akogi0304');
-    echo '接続成功';
-} catch (PDOException $e) {
-    echo "接続失敗: " . $e->getMessage() . "\n";
-    exit();
-}
-
-
-}
-
-
-
-
-
-
-?>
 <!doctype html>
 
 <html>
@@ -40,11 +9,13 @@ try {
     </head>
 
     <body>
-        X座標：
-        <input type="text" id="txtX" /> Y座標：
-        <input type="text" id="txtY" />
-        <div id="year"></div>
-        <div id="month"></div>
+        <?php
+            require_once('show_data.php');
+        ?>
+    
+
+        <div id="year"><?php echo date("Y")?>年</div>
+        <div id="month"><?php echo date("m")?>月</div>
 
         <div id="content">
 
@@ -78,7 +49,7 @@ try {
                     <tr>
                         <th>1</th>
                         <td>&nbsp;</td>
-                        <td id="1_9"></td>
+                        <td id="1_9"><p><?php echo $list[0]; ?></p></td>
                         <td id="1_10">&nbsp;</td>
                         <td id="1_11">&nbsp;</td>
                         <td>&nbsp;</td>
@@ -371,7 +342,7 @@ try {
         <script type="text/javascript">
 
 
-
+            //マウスの位置を取得.
             document.body.addEventListener("mousemove", function (e) {
                 var mX = e.pageX;  //X座標
                 var mY = e.pageY;  //Y座標
@@ -379,25 +350,38 @@ try {
                 document.getElementById("txtY").value = mY;
             });
 
+            //1_9をclick後、保存情報テキストフィールド展開.
 
+            var yotei = "<?php echo $list[0] ?>";
+            console.log(yotei);
             document.getElementById("1_9").onclick = function () {
-                document.getElementById('reserve_click').innerHTML = '<form id="loginForm" name="loginForm" method="POST" action=""> '
-            + '<div id="reserve_info"><form name="title">'
-            +'<input type="text" name="year" id="year" maxlength="5">年'
-            +'<input type="text" name="month" id="month" maxlength="5">月'
-            +'<input type="text" name="date" id="date" maxlength="5">日 曜日'
-            +'<br>'
-            +'タイトル<input type="text" name="title" id="title" maxlength="5" value="No title">'
-            +'<br>'
-            +'<p>場所</p>'
-            +'<input type="text" name="place" id="place" maxlength="5">'
-            +'</form><input type="submit" id="sub" name="sub" value="保存"></div></form>';
+                
+                if(yotei == '予定なし') {
+                    document.getElementById('reserve_click').innerHTML = '<form id="loginForm" name="loginForm" method="POST" action=""> '
+                    + '<div id="reserve_info">'
+                    +'<input type="text" name="year" id="year" maxlength="5">年'
+                    +'<input type="text" name="month" id="month" maxlength="5">月'
+                    +'<input type="text" name="date" id="date" maxlength="5">日 曜日'
+                    +'<br>'
+                    +'タイトル<input type="text" name="title" id="title" maxlength="5" value="">'
+                    +'<br>'
+                    +'<p>場所</p>'
+                    +'<input type="text" name="place" id="place" maxlength="5">'
+                    +'<input type="submit" id="sub" name="sub" value="保存"></div></form>';
+                }else{
+                    document.getElementById('reserve_click').innerHTML = '<form id="loginForm" name="loginForm" method="POST" action=""> '
+                    +'<input type="submit" id="del" name="del" value="削除"></div></form>';
+                }
+
 
             }
 
 
 
         </script>
+        <?php
+            require_once('pdo.php');
+        ?>
     </body>
 
 </html>
