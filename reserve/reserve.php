@@ -173,8 +173,8 @@ session_start();
                     if (content == '') {
                         document.getElementById('reserve_click').innerHTML = '<form id="loginForm" name="loginForm" method="POST" action=""> '
                             + '<div id="reserve_info">'
-                            + '<input type="text" name="year" id="year" maxlength="5" value=' +<? php echo $ydate;?> +'>年'
-                                + '<input type="text" name="month" id="month" maxlength="5" value=' +<? php echo date("m");?> +'>月' //月の部分は、このページに表示されているもの.
+                            + '<input type="text" name="year" id="year" maxlength="5" value=' +<?php echo $ydate;?> +'>年'
+                                + '<input type="text" name="month" id="month" maxlength="5" value=' +<?php echo date("m");?> +'>月' //月の部分は、このページに表示されているもの.
                                     + '<input type="text" name="date" id="date" maxlength="5" value=' + date_a + '>日 曜日'
                                     + '<br>'
                                     + 'タイトル<input type="text" name="title" id="title" maxlength="5" value="">'
@@ -189,8 +189,8 @@ session_start();
                                     + '<input type="submit" id="sub" name="sub" value="保存"></div></form>';
                     } else {
                         document.getElementById('reserve_click').innerHTML = '<form id="loginForm" name="loginForm" method="POST" action=""> '
-                            + '<input type="hidden" name="year" value=' +<? php echo $ydate;?> +'>'
-                                + '<input type="hidden" name="month" id="month" maxlength="5" value=' +<? php echo date("m");?> +'>'
+                            + '<input type="hidden" name="year" value=' +<?php echo $ydate;?> +'>'
+                                + '<input type="hidden" name="month" id="month" maxlength="5" value=' +<?php echo date("m");?> +'>'
                                     + '<input type="hidden" name="date" id="date" maxlength="5" value=' + date_a + '>'
                                     + '<input type="hidden" name="start_h" id="start_h" maxlength="5" value=' + start_h + '>'
                                     + '<input type="hidden" name="finish_h" id="finish_h" maxlength="5" value=' + finish_h + '>'
