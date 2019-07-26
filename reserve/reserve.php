@@ -72,6 +72,7 @@ session_start();
                 //show_date.phpからstackリストの中身をjsに渡す.
                 var stack_from_php = JSON.parse('<?php echo $stack_from_php; ?>');
                 var stack_start_from_php = JSON.parse('<?php echo $stack_start_from_php; ?>');
+                var stack_title_from_php = JSON.parse('<?php echo $stack_title_from_php; ?>');
                 // console.log(stack_from_php);
 
                 var array_count = stack_from_php.length;  //stackの数.*日にちの数.
@@ -81,11 +82,12 @@ session_start();
                 for (var i = 0; i < array_count; i++) { //for構文かいし. //9
                     var stack = stack_from_php[i];//777821187
                     var stack_start = stack_start_from_php[i]; 
+                    var stack_title =stack_title_from_php[i];
                     // console.log(stack);
                     // console.log(stack_start);
                     for (var l = 9; l < 24; l++) { //11
                         if (stack_start == l) {
-                            document.getElementById(alpha[stack - 1] + '_' + l).innerHTML = '<p>入った！</p>';  //_10のところをあとで治す.
+                            document.getElementById(alpha[stack - 1] + '_' + l).innerHTML = '<div class="container"><canvas class="canvas" style="background-color:red;"></canvas><div class="title">'+stack_title+'</div></div>';  //_10のところをあとで治す.
                         }
                     }
 	            }
