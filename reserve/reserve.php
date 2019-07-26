@@ -23,11 +23,11 @@ session_start();
             <form name="yearmonth" method="POST" action="">
                 <div id="year">
                     <?php echo $ydate?>年</div>
-                    <input type="hidden" id="yeara" name="yeara" value='anan'>
+                <input type="hidden" id="yeara" name="yeara" value='anan'>
                 <!-- この画面の年はこのydateに格納する、あとで加工必要あり. -->
                 <div id="month">
                     <?php echo $mdate?>月</div>
-                    <input type="hidden" name="month"value='+<?php echo $mdate?>+'>
+                <input type="hidden" name="month" value='+<?php echo $mdate?>+'>
             </form>
             <!-- この画面の年はこのmdateに格納する、あとで加工必要あり. -->
             <div id="content">
@@ -66,7 +66,7 @@ session_start();
                     var tbody_item = '<tr><th>' + kk + '</th><td></td>' + td_item + '';
                     tbody.innerHTML += tbody_item;
                 }
-                
+
 
 
                 //show_date.phpからstackリストの中身をjsに渡す.
@@ -81,16 +81,16 @@ session_start();
 
                 for (var i = 0; i < array_count; i++) { //for構文かいし. //9
                     var stack = stack_from_php[i];//777821187
-                    var stack_start = stack_start_from_php[i]; 
-                    var stack_title =stack_title_from_php[i];
+                    var stack_start = stack_start_from_php[i];
+                    var stack_title = stack_title_from_php[i];
                     // console.log(stack);
                     // console.log(stack_start);
                     for (var l = 9; l < 24; l++) { //11
                         if (stack_start == l) {
-                            document.getElementById(alpha[stack - 1] + '_' + l).innerHTML = '<div class="container"><canvas class="canvas" style="background-color:red;"></canvas><div class="title">'+stack_title+'</div></div>';  //_10のところをあとで治す.
+                            document.getElementById(alpha[stack - 1] + '_' + l).innerHTML = '<div class="container"><canvas class="canvas" style="background-color:red;"></canvas><div class="title">' + stack_title + '</div></div>';  //_10のところをあとで治す.
                         }
                     }
-	            }
+                }
 
 
                 //1_9をclick後、保存情報テキストフィールド展開.
@@ -173,8 +173,8 @@ session_start();
                     if (content == '') {
                         document.getElementById('reserve_click').innerHTML = '<form id="loginForm" name="loginForm" method="POST" action=""> '
                             + '<div id="reserve_info">'
-                            + '<input type="text" name="year" id="year" maxlength="5" value=' +<?php echo $ydate;?> +'>年'
-                                + '<input type="text" name="month" id="month" maxlength="5" value=' +<?php echo date("m");?> +'>月' //月の部分は、このページに表示されているもの.
+                            + '<input type="text" name="year" id="year" maxlength="5" value=' +<? php echo $ydate;?> +'>年'
+                                + '<input type="text" name="month" id="month" maxlength="5" value=' +<? php echo date("m");?> +'>月' //月の部分は、このページに表示されているもの.
                                     + '<input type="text" name="date" id="date" maxlength="5" value=' + date_a + '>日 曜日'
                                     + '<br>'
                                     + 'タイトル<input type="text" name="title" id="title" maxlength="5" value="">'
@@ -189,8 +189,8 @@ session_start();
                                     + '<input type="submit" id="sub" name="sub" value="保存"></div></form>';
                     } else {
                         document.getElementById('reserve_click').innerHTML = '<form id="loginForm" name="loginForm" method="POST" action=""> '
-                            + '<input type="hidden" name="year" value=' +<?php echo $ydate;?> +'>'
-                                + '<input type="hidden" name="month" id="month" maxlength="5" value=' +<?php echo date("m");?> +'>'
+                            + '<input type="hidden" name="year" value=' +<? php echo $ydate;?> +'>'
+                                + '<input type="hidden" name="month" id="month" maxlength="5" value=' +<? php echo date("m");?> +'>'
                                     + '<input type="hidden" name="date" id="date" maxlength="5" value=' + date_a + '>'
                                     + '<input type="hidden" name="start_h" id="start_h" maxlength="5" value=' + start_h + '>'
                                     + '<input type="hidden" name="finish_h" id="finish_h" maxlength="5" value=' + finish_h + '>'
