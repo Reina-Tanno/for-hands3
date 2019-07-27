@@ -1,8 +1,7 @@
 <?php
-
 session_start();
-require_once('show_data.php');
 $errorMessage = "";
+// require_once('show_data.php');
 
 
 //データを消す処理.
@@ -32,7 +31,6 @@ if(isset($_POST[del])){
         $prepare->execute();
         $alert = "<script type='text/javascript'>alert('消しました');</script>"; //table全部消えちゃう.
         echo $alert;
-        exit();
 
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
@@ -104,18 +102,82 @@ if(isset($_POST[sub])){ //もしsubがPOSTされたらdbに接続,insertする.
             $prepare = $dbh->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($result);
-            exit();
+            // var_dump($result);
+            
 
         } catch (PDOException $e) {
             echo "接続失敗: " . $e->getMessage() . "\n";
             exit();
         }
+
+
+        $y = $year;
+        $m = $month;
+        $d = $date;
+        $s = $start_h.$start_m;
+        $f = $finish_h.$finish_m;
+
+        if($m < 10){
+            $m = '0'.$m;
+        }
+
+
+        $data = array('year' => $y, 'month' => $m, 'start' => $s, 'finish' => $f,'date' => $d);
+
+
+    //IDを設定する.
+        if($setid == 0){
+            $id = 30000 + 1;
+        }else{
+            $id = $setid;
+        }
+    
+      // ファイルを開く（追記）
+        $file = fopen("./data/".$data["year"].$data["month"].".dat","a");
+        $table_file = fopen("./data/id_table.dat","a");
+    
+      // レコードを作製する（ID,日付,開始時間,終了時間,予約か予定）
+        $record = $id.",".$data["date"].",".$data["start"].",".$data["finish"]."\n";
+        $table_col = $id.",".$data["year"].$data["month"]."\n";
+    
+      // レコードを書き込む
+        if(fwrite($file,$record) && fwrite($table_file,$table_col)){
+            fclose($file);
+            fclose($table_file);
+        }else{
+            return ERROR;
+        }
+            return $id;
+
+        // function getIDTable(){
+        //     $id_table = array();
+        //     if(file_exists("./data/id_table.dat")){
+        //         $file = fopen("./data/id_table.dat","r");
+        //         while(!feof($file)){
+        //             $line = fgetcsv($file,100000,",");
+        //             if($line[0] != ""){
+        //                 $id_table[$line[0]] = $line[1];
+        //             }
+        //         }
+        //         fclose($file);
+        //     }
+        //     return $id_table;
+        // }
+
+        // function getCurrentID(){
+        //     $id_table = getIDTable();
+        //     $current_key = 0;
+        //     foreach($id_table as $key => $value){
+        //         $key = intval($key);
+        //         if($key > $current_key){
+        //             $current_key = $key;
+        //         }
+        //     }
+        //     return $current_key;
+        // }   
     }
 }
 
-require('reserve.php');
 
+require_once('reserve.php');
 ?>
-
-
