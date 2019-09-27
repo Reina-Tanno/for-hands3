@@ -79,9 +79,9 @@ if($agent->isDocomo()){
 
 	<?php
 	if($_GET["err"] == "nodata"){
-	  print "<tr><td><font color=\"#FF0000\" size=\"1\">日付を入力してください。</font><br></td></tr>";
+    print "<tr><td><font color=\"#FF0000\" size=\"1\">日付を入力してください。</font><br></td></tr>";
 	}else if($_GET["err"] == "novalid"){
-	  print "<tr><td><font color=\"#FF0000\" size=\"1\">日付の値が正しくありません。</font><br></td></tr>";
+    print "<tr><td><font color=\"#FF0000\" size=\"1\">日付の値が正しくありません。</font><br></td></tr>";
 	}else if($_GET["err"] == "past"){
 	  print "<tr><td><font color=\"#FF0000\" size=\"1\">過去の日付が選択されています。</font><br></td></tr>";
 	}

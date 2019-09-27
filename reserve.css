@@ -1,0 +1,201 @@
+
+/* body {
+  zoom: 2.5;
+  -moz-transform: scale(1.5);
+} */
+
+
+table.table{
+  display: block;
+  position: absolute;
+  border-collapse: collapse;
+  overflow: scroll;
+  width: calc(100vw - 3.0rem);
+  height: calc(75vh);
+  z-index: 1;
+}
+
+#reserve_info{
+  z-index: 3;
+  position: absolute;
+  position: fixed;
+  background-color: white;
+  box-shadow: 0 0 8px gray;
+  width: 300px;
+  height: 400px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  padding:100px;
+}
+
+#year{
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding:10px;
+  font-size:1.0em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 5px;
+  width:20px; 
+}
+
+#month{
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding:10px;
+  font-size:1.0em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 5px;
+  width:20px;  
+}
+
+#date{
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding:10px;
+  font-size:1.0em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 5px;
+  width:20px; 
+}
+
+#title{
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding:10px;
+  font-size:1.0em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 5px;
+  width:200px; 
+}
+
+#place{
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding:10px;
+  font-size:1.0em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 5px;
+  width:200px; 
+}
+
+#start_h,
+#start_m,
+#finish_h,
+#finish_m{
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding:10px;
+  font-size:1.0em;
+  font-family:Arial, sans-serif;
+  color:#aaa;
+  border:solid 1px #ccc;
+  margin:0 0 5px;
+  width:20px; 
+}
+
+.table_table thead,
+.table_table tbody {
+  display: block;
+  width: max-content;  /* 内容に合わせて、折り返さず、一列で内容を表示 */
+}
+
+
+
+.table_table td {
+  display: inline-block; /* 横に一列 */
+  width: 10.0rem; /*tbody.tdのwidth*/
+  height:7rem; /*tbody.tdのheight*/
+  background: rgb(247, 247, 247); /*tbodyのtdの色*/
+  font-size: 1.0rem;
+  border:solid 0.3px white;
+  margin: 0px;
+  padding:0px
+  
+}
+
+.table_table th{
+    background: rgb(255, 255, 255);
+    height: 2rem; /*時間のheight*/
+    width:159px;
+    padding:0px;
+    font-size:20px; /*時間のフォントの大きさ*/
+}
+
+.table_table tbody th {
+  position: sticky;/* 固定. */
+  left: 0; /*固定する場所*/
+  z-index: 1; /*数が大きいほうが上.*/
+}
+
+.table_table thead {
+  position: sticky;   /* 固定. */
+  top: 0;
+  z-index: 2; /*数が大きいほうが上.*/
+
+}
+.table_table tr *:nth-child(1){
+  width: 10.0rem;/*canvasの大きさ*/
+}
+
+/* th.th_left{
+  height:5.7em; /*横の数字(日にち)の高さ設定.*/
+/* } */ 
+
+#l2 {
+    top: 0px;   /*動的に変更されるので適当*/
+    left: 0px;  /*動的に変更されるので適当*/
+    width: 400px; /*撮影枠サイズ*/
+    height: 60px; /*撮影枠サイズ*/
+    position: absolute; /*absoluteに設定*/
+    padding: 0em 0em;
+}
+
+
+.container {
+position:relative; /*canvasがどっかいっちゃう.*/
+background-color:rgb(255, 0, 0);
+}
+
+.title {
+position:absolute;/*タイトルがどっかいっちゃう.*/
+color:rgb(0, 0, 0);
+font-size:13px;
+text-align: center;
+vertical-align: middle;
+
+}
+
+.canvas {
+position: absolute;
+left: 0px;
+top: 0px;
+width: 10.0rem;
+background-color:#fff;
+}
+
+#yearmonth{
+  display:flex;
+}
+
+p{ 
+  font-size:20px;
+  margin:0px;
+}
+
+.date{
+  font-size: 35px; /*日にちのフォントの大きさ*/
+  width:60px;
+}

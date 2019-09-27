@@ -137,6 +137,7 @@ if(isset($_POST[sub])){ //もしsubがPOSTされたらdbに接続,insertする.
       // レコードを作製する（ID,日付,開始時間,終了時間,予約か予定）
         $record = $id.",".$data["date"].",".$data["start"].",".$data["finish"]."\n";
         $table_col = $id.",".$data["year"].$data["month"]."\n";
+var_dump($data["year"].$data["month"]);
 var_dump($file);
 var_dump($record);//.
 var_dump($table_file); 
